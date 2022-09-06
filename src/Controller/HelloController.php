@@ -2,34 +2,21 @@
 
 namespace App\Controller;
 
-use App\Taxes\Calculator;
-use Cocur\Slugify\Slugify;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-class HelloController
+class HelloController extends AbstractController
 {
 
-    protected $calculator;
-
-    public function __construct(Calculator $calculator)
-    {
-        $this->calculator = $calculator;
-    }
     /**
      * @Route("/hello/{prenom?World}" , name="hello" , methods = {"GET" })
      */
 
-    public function hello($prenom, Slugify $slugify)
+    public function hello($prenom)
     {
-
-        dump($slugify->slugify("Hello"));
-
-        $tva = $this->calculator->calcul(100);
-
-        dd($tva);
-        return new Response("Hello $prenom");
+        return $this->render("hello.html.twig", [
+            'prenom' => $prenom
+        ]);
     }
 }

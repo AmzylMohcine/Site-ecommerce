@@ -23,7 +23,6 @@ class TestController
 
     public function index()
     {
-
         return new Response("Ca fonctionne");
     }
     /** 
@@ -34,8 +33,7 @@ class TestController
     public function test(Request $request)
     {
         dump($request);
-        $age = $request->attributes->get('age');
-
+        $age = $request->attributes->get('age');    
         return new Response("vous avez $age ans ");
     }
 }
