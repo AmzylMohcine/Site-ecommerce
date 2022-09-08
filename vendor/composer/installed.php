@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '24f12d7066ca6aadd1d7c00dcff6ab2eba9c8b2c',
+        'reference' => 'd1697be9d8a6df76f57dd16a8801b56ddbb9ba15',
         'name' => 'symfony/website-skeleton',
         'dev' => true,
     ),
@@ -1304,7 +1304,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '24f12d7066ca6aadd1d7c00dcff6ab2eba9c8b2c',
+            'reference' => 'd1697be9d8a6df76f57dd16a8801b56ddbb9ba15',
             'dev_requirement' => false,
         ),
         'symfony/yaml' => array(

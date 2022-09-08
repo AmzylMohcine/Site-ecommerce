@@ -21,11 +21,13 @@
 							, ({{p.price / 100 }}&euro;)
 						</h4>
 
-						<span class="badge alert-warning">{{p.category.name}}</span>
+						<a href="{{ path ('product_category' , {'slug' : p.category.slug})}}">
+							<span class="badge alert-warning">{{p.category.name}}</span>
+						</a>
 
 						<p class="card-text">
 							{{p.shortDescription}}</p>
-						<a href="#" class="btn btn-primary btn-sm">
+						<a href="{{ path('product_show' , {'slug': p.slug})}}" class="btn btn-primary btn-sm">
 							Details</a>
 						<a href=" Ajouter " class="btn btn-success btn-sm">Ajouter
 						</a>

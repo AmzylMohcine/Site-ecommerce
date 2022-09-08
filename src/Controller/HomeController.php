@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/" , name ="home page")
+     * @Route("/" , name ="homepage")
      */
     public function homePage(ProductRepository $productRepository)
     {
