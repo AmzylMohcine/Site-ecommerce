@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+
+{# appeler un theme #}
+
+{# deja declaré dans twig.yaml {% form_theme formView 'bootstrap_4_layout.html.twig'%} #}
+
+
+	{% block title %}
+Création d'un produit
+{% endblock %}
+
+	{% block body %}
+		<h1>
+	Nouveau produit :
+	</h1>
+
+	{{form_start(formView)}}
+	{{form_errors(formView)}}
+		<div class="row"> <div class="col">
+			{{form_row(formView.name)}}
+			{{form_row(formView.price)}}
+		</div>
+
+		<div class="col">
+
+			{{form_row(formView.category)}}
+			{{form_row(formView.shortDescription)}}
+			{{form_row(formView.picture)}}
+
+		</div>
+	</div>
+
+	<button type="submit" class="btn btn-primary mt-1">
+		<i class="fas fa-save"></i>
+		Créer le produit</button>
+
+	{{form_end(formView)}}
+
+{% endblock %}
+
+
+{# creation de theme pour les form row #}
+{% block form_row %}
+
+	<div class="form-group">
+		{{ form_label(form)}}
+		{{form_widget(form , {"attr" : {"class":"form-control"}})}}
+	</div>
+
+{% endblock %}
