@@ -22,7 +22,6 @@ class CategoryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
-
             $em->persist($category);
             $em->flush();
 
@@ -53,6 +52,8 @@ class CategoryController extends AbstractController
 
 
         if ($form->isSubmitted()) {
+
+            $em->remove($category);
 
             $em->flush();
 
