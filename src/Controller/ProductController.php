@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ProductController extends AbstractController
 {
@@ -48,14 +49,73 @@ class ProductController extends AbstractController
 
     //modifier un produit 
     #[Route('/admin/product/{id}/edit', name: 'product_edit')]
-    public function edit($id, ProductRepository $productRepository, Request $request, EntityManagerInterface $em)
+    public function edit($id, ProductRepository $productRepository, Request $request, EntityManagerInterface $em, ValidatorInterface $validator)
     {
+        //test de collection 
+        // $client = [
+        //     'nom' => '',
+        //     'prenom' => 'amzyl',
+        //     'voiture' => [
+        //         'marque' => 'BMW',
+        //         'couleur' => ''
+        //     ]
+        // ];
+
+
+        // $collection = new Collection([
+        //     'nom' => new NotBlank([
+        //         'message' => "le nom ne doit pas etre vide"
+        //     ]),
+        //     'prenom' =>  new NotBlank(['message' => "le prenom ne doit pas etre blank"]),
+        //     new Length(['min' => 3, 'minMessage' => 'ne doit pas faire moins de 3 caractere']),
+
+
+        //     'voiture' => new Collection([
+        //         'marque' => new NotBlank(['message' => 'marque obligatoire']),
+        //         'couleur' => new NotBlank(['message' => 'couleur est obligatoire'])
+
+        //     ]),
+        // ]);
+
+
+        // $product = new Product();
+
+        // $product->setName('sddd');
+        // $product->setPrice(50);
+
+        // $resultat = $validator->validate($product);
+
+        // if ($resultat->count() > 0) {
+        //     dd("il y'a des erreurs", $resultat);
+        // }
+
+        // dd("tout va bien");
+
+
+        //test des donnee scalaire 
+        // $age = -10;
+        // $result = $validator->validate($age, [new LessThanOrEqual([
+        //     'value' => 90,
+        //     'message' => "khso ykon na9es ela  {{ compared_value }} mais nta 3titini {{ value }}"
+        // ]), new ConstraintsGreaterThan([
+        //     'value' => 0,
+        //     'message' => "khso ykon kter mn {{ compared_value }} nta 3titini {{ value }} "
+        // ])]);
+
+        // if ($result->count() > 0) {
+        //     dd("il y'a des erreur", $result);
+        // }
+
+        // dd("tout va bien");
+
         $product = $productRepository->find($id);
         $form = $this->createForm(ProductType::class, $product);
         $formView = $form->createView();
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            dd($form->getData());
 
             $em->flush();
 

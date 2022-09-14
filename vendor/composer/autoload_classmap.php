@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controller\\CategoryController' => $baseDir . '/src/Controller/CategoryController.php',
     'App\\Controller\\HelloController' => $baseDir . '/src/Controller/HelloController.php',
     'App\\Controller\\HomeController' => $baseDir . '/src/Controller/HomeController.php',
     'App\\Controller\\ProductController' => $baseDir . '/src/Controller/ProductController.php',
@@ -13,6 +14,10 @@ return array(
     'App\\DataFixtures\\AppFixtures' => $baseDir . '/src/DataFixtures/AppFixtures.php',
     'App\\Entity\\Category' => $baseDir . '/src/Entity/Category.php',
     'App\\Entity\\Product' => $baseDir . '/src/Entity/Product.php',
+    'App\\Form\\CategoryType' => $baseDir . '/src/Form/CategoryType.php',
+    'App\\Form\\DataTransformer\\CentimeTransformer' => $baseDir . '/src/Form/DataTransformer/CentimeTransformer.php',
+    'App\\Form\\ProductType' => $baseDir . '/src/Form/ProductType.php',
+    'App\\Form\\Type\\PriceType' => $baseDir . '/src/Form/Type/PriceType.php',
     'App\\Kernel' => $baseDir . '/src/Kernel.php',
     'App\\Repository\\CategoryRepository' => $baseDir . '/src/Repository/CategoryRepository.php',
     'App\\Repository\\ProductRepository' => $baseDir . '/src/Repository/ProductRepository.php',

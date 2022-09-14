@@ -12,7 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ProductType extends AbstractType
 {
@@ -23,7 +23,8 @@ class ProductType extends AbstractType
                 "label" => "Nom de produit",
                 "attr" => [
                     "placeholder" => "Tapez le nom de produit "
-                ]
+                ],
+                'required' => false,
             ])
             ->add('shortDescription', TextareaType::class, [
                 "label" => "Description courte",

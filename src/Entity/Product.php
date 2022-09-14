@@ -2,9 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProductRepository;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -15,9 +20,11 @@ class Product
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'ne doit pas etre nul ')]
     private ?string $name = null;
 
     #[ORM\Column]
+
     private ?int $price = null;
 
     #[ORM\Column(length: 255)]
@@ -31,6 +38,19 @@ class Product
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $shortDescription = null;
+
+    // public static function loadValidatorMetadata(ClassMetadata $metaData)
+    // {
+    //     $metaData->addPropertyConstraints('name', [
+    //         new NotBlank(['message' => 'le nom de produit est obligatoire']),
+    //         new Length(['min' => 3, 'max' => 255, "minMessage" => " Plus que 3 svp"])
+    //     ]);
+
+    //     $metaData->addPropertyConstraint(
+    //         'price',
+    //         new NotBlank(['message' => 'le prix est obligatoire']),
+    //     );
+    // }
 
     public function getId(): ?int
     {
@@ -47,7 +67,7 @@ class Product
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -59,7 +79,7 @@ class Product
         return $this->price;
     }
 
-    public function setPrice(int $price): self
+    public function setPrice(?int $price): self
     {
         $this->price = $price;
 

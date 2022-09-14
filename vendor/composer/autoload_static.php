@@ -609,6 +609,7 @@ class ComposerStaticInit5d48df6c1f5cd9881ccd6f9a8d798b01
     );
 
     public static $classMap = array (
+        'App\\Controller\\CategoryController' => __DIR__ . '/../..' . '/src/Controller/CategoryController.php',
         'App\\Controller\\HelloController' => __DIR__ . '/../..' . '/src/Controller/HelloController.php',
         'App\\Controller\\HomeController' => __DIR__ . '/../..' . '/src/Controller/HomeController.php',
         'App\\Controller\\ProductController' => __DIR__ . '/../..' . '/src/Controller/ProductController.php',
@@ -616,6 +617,10 @@ class ComposerStaticInit5d48df6c1f5cd9881ccd6f9a8d798b01
         'App\\DataFixtures\\AppFixtures' => __DIR__ . '/../..' . '/src/DataFixtures/AppFixtures.php',
         'App\\Entity\\Category' => __DIR__ . '/../..' . '/src/Entity/Category.php',
         'App\\Entity\\Product' => __DIR__ . '/../..' . '/src/Entity/Product.php',
+        'App\\Form\\CategoryType' => __DIR__ . '/../..' . '/src/Form/CategoryType.php',
+        'App\\Form\\DataTransformer\\CentimeTransformer' => __DIR__ . '/../..' . '/src/Form/DataTransformer/CentimeTransformer.php',
+        'App\\Form\\ProductType' => __DIR__ . '/../..' . '/src/Form/ProductType.php',
+        'App\\Form\\Type\\PriceType' => __DIR__ . '/../..' . '/src/Form/Type/PriceType.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
         'App\\Repository\\CategoryRepository' => __DIR__ . '/../..' . '/src/Repository/CategoryRepository.php',
         'App\\Repository\\ProductRepository' => __DIR__ . '/../..' . '/src/Repository/ProductRepository.php',
