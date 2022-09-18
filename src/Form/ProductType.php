@@ -25,12 +25,15 @@ class ProductType extends AbstractType
                     "placeholder" => "Tapez le nom de produit "
                 ],
                 'required' => false,
+                'constraints' => new NotBlank(['message' => 'validation de formulaire : nom produit vide'])
             ])
             ->add('shortDescription', TextareaType::class, [
                 "label" => "Description courte",
                 "attr" => [
                     "placeholder" => "Tapez une desciprtion courte pour le produit pour le visiteur"
-                ]
+                ],
+                'required' => false,
+                'constraints' => new NotBlank(['message' => 'validation de formulaire : nom produit vide'])
             ])
 
             //pricetype c'est un type de prix creer 
@@ -39,17 +42,21 @@ class ProductType extends AbstractType
                 "attr" => [
                     "placeholder" => "prix.."
                 ],
+
+
                 // divise par 100 apres le submit , personnalider sinon on peut utiliser divisor de type MoneyType
-                'divide' => 100
-
-
+                'divide' => 100,
+                'required' => false,
+                'constraints' => new NotBlank(['message' => 'validation de formulaire : nom produit vide']),
             ])
 
             ->add('picture', UrlType::class, [
                 "label" => "image de produit",
                 'attr' => [
                     "placeholder" => "tapez une url d'image "
-                ]
+                ],
+                'required' => false,
+                'constraints' => new NotBlank(['message' => 'validation de formulaire : nom produit vide'])
             ])
 
             //entity type faire appel a name comme choice de la base donnees

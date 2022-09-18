@@ -5,11 +5,7 @@ namespace App\Entity;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProductRepository;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints as Assert;
-
-use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -20,11 +16,11 @@ class Product
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: 'ne doit pas etre nul ')]
+    #[Assert\NotBlank(message: 'Not blank please')]
     private ?string $name = null;
 
     #[ORM\Column]
-
+    #[Assert\NotBlank(message: 'Not blank please')]
     private ?int $price = null;
 
     #[ORM\Column(length: 255)]
@@ -34,23 +30,29 @@ class Product
     private ?Category $category = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Not blank please')]
     private ?string $picture = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $shortDescription = null;
 
-    // public static function loadValidatorMetadata(ClassMetadata $metaData)
-    // {
-    //     $metaData->addPropertyConstraints('name', [
-    //         new NotBlank(['message' => 'le nom de produit est obligatoire']),
-    //         new Length(['min' => 3, 'max' => 255, "minMessage" => " Plus que 3 svp"])
-    //     ]);
 
-    //     $metaData->addPropertyConstraint(
-    //         'price',
-    //         new NotBlank(['message' => 'le prix est obligatoire']),
-    //     );
-    // }
+    public function revision()
+    {
+        // public static function loadValidatorMetadata(ClassMetadata $metaData)
+        // {
+        //     $metaData->addPropertyConstraints('name', [
+        //         new NotBlank(['message' => 'le nom de produit est obligatoire']),
+        //         new Length(['min' => 3, 'max' => 255, "minMessage" => " Plus que 3 svp"])
+        //     ]);
+
+        //     $metaData->addPropertyConstraint(
+        //         'price',
+        //         new NotBlank(['message' => 'le prix est obligatoire']),
+        //     );
+        // }
+    }
+
 
     public function getId(): ?int
     {
@@ -91,7 +93,7 @@ class Product
         return $this->slug;
     }
 
-    public function setSlug(string $slug): self
+    public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
 
@@ -115,7 +117,7 @@ class Product
         return $this->picture;
     }
 
-    public function setPicture(string $picture): self
+    public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
 
@@ -127,7 +129,7 @@ class Product
         return $this->shortDescription;
     }
 
-    public function setShortDescription(string $shortDescription): self
+    public function setShortDescription(?string $shortDescription): self
     {
         $this->shortDescription = $shortDescription;
 

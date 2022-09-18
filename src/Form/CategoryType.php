@@ -16,13 +16,14 @@ class CategoryType extends AbstractType
             ->add('name', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Entrez le nom de catégorie'
-                ]
-            ])
-            ->add('slug', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'Entrez le slug'
-                ]
+                ],
+
             ]);
+        // ->add('slug', TextType::class, [
+        //     'attr' => [
+        //         'placeholder' => 'Entrez le slug'
+        //     ]
+        // ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
