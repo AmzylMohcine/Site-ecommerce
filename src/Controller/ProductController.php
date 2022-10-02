@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class ProductController extends AbstractController
 {
     //affiche les produits d'une categorie
-    #[Route('/{slug}', name: 'product_category')]
+    #[Route('/category/{slug}', name: 'product_category')]
     public function category($slug, CategoryRepository $categoryRepository)
     {
         // cherche par slug les catégories
