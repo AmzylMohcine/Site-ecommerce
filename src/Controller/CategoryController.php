@@ -6,9 +6,15 @@ use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Security as CoreSecurity;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 class CategoryController extends AbstractController
@@ -60,9 +66,17 @@ class CategoryController extends AbstractController
 
 
     #[Route('/admin/category/{id}/edit', name: 'category_edit')]
-    public function edit($id, CategoryRepository $categoryRepository, Request $request, EntityManagerInterface $em, SluggerInterface $slugger)
+    public function edit($id, CategoryRepository $categoryRepository, Request $request, EntityManagerInterface $em, SluggerInterface $slugger, CoreSecurity $security)
     {
+
         $category = $categoryRepository->find($id);
+
+        if (!$category) {
+            return new NotFoundHttpException("Categorie n'existe pas ");
+        }
+
+        // $this->denyAccessUnlessGranted('CAN_EDIT', $category, "Non vous n'aves pas le droit");
+
 
         $form = $this->createForm(CategoryType::class, $category);
 

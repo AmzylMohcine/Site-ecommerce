@@ -16,12 +16,12 @@ security:
     main:
       lazy: true
       provider: app_user_provider
-      custom_authenticator: App\Security\LoginFormAuthenticator
-      # form_login:
-      #   login_path: security_login # quel endroit on trouve le formulaire
-      #   check_path: security_login #check si les credentials sont correct
-      #   username_parameter: login[email] #parametre de username
-      #   password_parameter: login[password]
+      # custom_authenticator: App\Security\LoginFormAuthenticator
+      form_login:
+        login_path: security_login # quel endroit on trouve le formulaire
+        check_path: security_login #check si les credentials sont correct
+        username_parameter: login[email] #parametre de username
+        password_parameter: login[password]
 
       logout:
         path: security_logout
@@ -35,7 +35,7 @@ security:
   # Easy way to control access for large sections of your site
   # Note: Only the *first* access control that matches will be used
   access_control:
-    # - { path: ^/admin, roles: ROLE_ADMIN }
+    - { path: ^/admin, roles: ROLE_ADMIN }
     # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
