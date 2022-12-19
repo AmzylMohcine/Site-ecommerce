@@ -18,8 +18,31 @@
 		{% endblock %}
 	</head>
 	<body>
+
+
 		{% include "shared/_nav.html.twig" %}
-		<div class="container pt-5"> {% block body %}{% endblock %}
+
+		{% for rubrique , messages  in app.flashes %}
+			<div class="alert alert-{{rubrique}}">
+
+				{% for message in messages %}
+					<p>
+						{{ message.title }}
+						{{ message.content }}
+					</p>
+				{% endfor %}
+
 			</div>
+		{% endfor %}
+
+
+		<div class="container pt-5">
+		
+		 {% block body %}{% endblock %}
+
+
+			</div>
+
+
 		</body>
 	</html>

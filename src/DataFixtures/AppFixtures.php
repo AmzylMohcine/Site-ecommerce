@@ -70,7 +70,7 @@ class AppFixtures extends Fixture
 
         $manager->persist($admin);
 
-        for ($u = 0; $u < 5; $u++) {
+        for ($u = 0; $u <= 5; $u++) {
             $user = new User();
 
             $hash = $this->passwordHasher->hashPassword($user, "password");

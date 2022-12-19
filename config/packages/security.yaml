@@ -18,7 +18,7 @@ security:
       provider: app_user_provider
       # custom_authenticator: App\Security\LoginFormAuthenticator
       form_login:
-        login_path: security_login # quel endroit on trouve le formulaire
+        login_path: security_login #quel endroit on trouve le formulaire
         check_path: security_login #check si les credentials sont correct
         username_parameter: login[email] #parametre de username
         password_parameter: login[password]
