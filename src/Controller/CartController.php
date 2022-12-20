@@ -13,20 +13,35 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController
 {
+
+    /**
+     * @var CartService
+     */
+    protected $cartService;
+    /**
+     * @var ProductRepository
+     */
+    protected $productRepository;
+
+    public function __construct(CartService $cartService,  ProductRepository $productRepository)
+    {
+        $this->cartService = $cartService;
+        $this->productRepository = $productRepository;
+    }
     #[Route('/cart/add/{id}', name: 'cart_add', requirements: ["id" =>  "\d+"])]
-    public function add($id, ProductRepository $ProductRepository, CartService $cartService, Request $request): Response
+    public function add($id, Request $request): Response
     {
 
         //securiser est ce que le produit exist
 
-        $product = $ProductRepository->find($id);
+        $product = $this->productRepository->find($id);
 
         if (!$product) {
             throw $this->createNotFoundException("le produit $id n'existe pas ");
         }
 
 
-        $cartService->add($id);
+        $this->cartService->add($id);
 
 
         // /** @var FlashBag */
@@ -51,11 +66,11 @@ class CartController extends AbstractController
 
 
     #[Route('/cart', name: 'cart_show')]
-    public function show(SessionInterface $sessionInterface, ProductRepository $productRepository, CartService $cartService)
+    public function show()
     {
 
-        $detailedCart = $cartService->getDetailedCartItems();
-        $total = $cartService->getTotal();
+        $detailedCart = $this->cartService->getDetailedCartItems();
+        $total = $this->cartService->getTotal();
 
         return $this->render('cart/index.html.twig', [
             'items' => $detailedCart,
@@ -65,15 +80,15 @@ class CartController extends AbstractController
 
 
     #[Route('/cart/delete/{id}', name: 'cart_delete', requirements: ["id" =>  "\d+"])]
-    public function delete($id, ProductRepository $productRepository, CartService $cartService)
+    public function delete($id)
     {
-        $product = $productRepository->find($id);
+        $product = $this->productRepository->find($id);
 
         if (!$product) {
             throw $this->createNotFoundException("Le produit $id n'existe pas ");
         }
 
-        $cartService->remove($id);
+        $this->cartService->remove($id);
 
         $this->addFlash("success", ["title" => "supprimé", "content" => "Le produit a bien été supprimé du panier."]);
 
@@ -81,16 +96,16 @@ class CartController extends AbstractController
     }
 
     #[Route('/cart/decrement/{id}', name: 'cart_decrement', requirements: ["id" =>  "\d+"])]
-    public function decrement($id, CartService $cartService, ProductRepository $productRepository)
+    public function decrement($id)
     {
-        $product = $productRepository->find($id);
+        $product = $this->productRepository->find($id);
 
         if (!$product) {
 
             throw $this->createNotFoundException(" Produit $id non trouver ");
         }
 
-        $cartService->decremente($id);
+        $this->cartService->decremente($id);
 
         $this->addFlash("success", ["title" => "Decre", "content" => "Le produit a bien été décrementé ."]);
 

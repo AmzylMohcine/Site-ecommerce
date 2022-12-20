@@ -17,6 +17,8 @@ class CartService
         $this->ProductRepository = $productRepository;
     }
 
+
+
     public function add(int $id)
     {
 
@@ -27,11 +29,11 @@ class CartService
 
         //voi si le produit id exsite deja dans la carte 
 
-        if (array_key_exists($id, $cart)) {
-            $cart[$id]++;
-        } else {
-            $cart[$id] = 1;
+        if (!array_key_exists($id, $cart)) {
+            $cart[$id] = 0;
         }
+        $cart[$id]++;
+
 
         //enregistrer le tableau dans la session 
         $session->set('cart', $cart);
