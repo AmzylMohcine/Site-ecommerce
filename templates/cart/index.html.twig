@@ -69,6 +69,16 @@
 			</tfoot>
 		</table>
 
+		<hr>
+		<h2>  Confirmer Votr Commande avec le formulaire </h2>
+
+		{{  form_start(confirmationForm) }}
+
+		{{ form_widget(confirmationForm)}}
+
+          <button type="submit" class="btn btn-success mt-4"> Je confirme !  </button>
+		{{ form_end(confirmationForm) }}
+
 	{% else %}
 		<h2>
 			le panier est vide !
