@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '0352e2a898a6620f53561c20bdd543d5b31fd8da',
+        'reference' => '31949dfffc9364147deba15c4fdef15cfd481035',
         'name' => 'symfony/website-skeleton',
         'dev' => true,
     ),
@@ -627,6 +627,15 @@
             'install_path' => __DIR__ . '/../sensio/framework-extra-bundle',
             'aliases' => array(),
             'reference' => 'bb962f8aed09e60b0942545f6e4842ffeee4aafd',
+            'dev_requirement' => false,
+        ),
+        'stripe/stripe-php' => array(
+            'pretty_version' => 'v10.3.0',
+            'version' => '10.3.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../stripe/stripe-php',
+            'aliases' => array(),
+            'reference' => '417d66a5b27a5ec53a706a346b05bfe170043d52',
             'dev_requirement' => false,
         ),
         'symfony/asset' => array(
@@ -1304,7 +1313,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '0352e2a898a6620f53561c20bdd543d5b31fd8da',
+            'reference' => '31949dfffc9364147deba15c4fdef15cfd481035',
             'dev_requirement' => false,
         ),
         'symfony/yaml' => array(
