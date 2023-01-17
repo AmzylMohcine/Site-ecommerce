@@ -34,8 +34,9 @@ class ProductController extends AbstractController
 
     // affiche les details d'un produit
     #[Route('/product/{slug}', name: 'product_show')]
-    public function show($slug, ProductRepository $productRepository)
+    public function show($slug, $prenom, ProductRepository $productRepository, Request $request)
     {
+
         $product = $productRepository->findOneBy(['slug' => $slug]);
         if (!$product) {
             throw $this->createNotFoundException("Produit n'existe pas");
