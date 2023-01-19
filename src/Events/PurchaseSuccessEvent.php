@@ -10,7 +10,6 @@ class PurchaseSuccessEvent extends Event
 
     private $purchase;
 
-
     public function __construct(Purchase $purchase)
     {
         $this->purchase = $purchase;
