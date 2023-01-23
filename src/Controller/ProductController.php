@@ -45,7 +45,6 @@ class ProductController extends AbstractController
             throw $this->createNotFoundException("Produit n'existe pas");
         }
 
-
         // lancer product View 
 
         $eventDispatcher->dispatch(new ProductViewEvent($product), 'product.view');

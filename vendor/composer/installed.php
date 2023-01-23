@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '31949dfffc9364147deba15c4fdef15cfd481035',
+        'reference' => '49e282efd9ea5f225ad133ea1a007bbbab945a18',
         'name' => 'symfony/website-skeleton',
         'dev' => true,
     ),
@@ -909,12 +909,12 @@
             'dev_requirement' => false,
         ),
         'symfony/mailer' => array(
-            'pretty_version' => 'v6.0.12',
-            'version' => '6.0.12.0',
+            'pretty_version' => 'v6.0.17',
+            'version' => '6.0.17.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/mailer',
             'aliases' => array(),
-            'reference' => '45aad5f8cfb481130e83dc4cb867c0f576182ea9',
+            'reference' => '0d4562cd13f1e5b78b578120ae5cbd5527ec1534',
             'dev_requirement' => false,
         ),
         'symfony/maker-bundle' => array(
@@ -1313,7 +1313,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '31949dfffc9364147deba15c4fdef15cfd481035',
+            'reference' => '49e282efd9ea5f225ad133ea1a007bbbab945a18',
             'dev_requirement' => false,
         ),
         'symfony/yaml' => array(
