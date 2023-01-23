@@ -29,11 +29,9 @@ class PurchasePersister
 
         // nous allons creer une purchase  et la lier avec l'utilisateur connecté 
 
-        $purchase->setUser($this->security->getUser())
-            ->setPurchasedAt(new DateTime())
-            ->setTotal($this->cartService->getTotal());
-
-
+        $purchase->setUser($this->security->getUser());
+        // ->setPurchasedAt(new DateTime())
+        // ->setTotal($this->cartService->getTotal());
         $this->manager->persist($purchase);
 
         // lier avec les produits dans panier 

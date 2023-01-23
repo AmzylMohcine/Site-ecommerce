@@ -44,7 +44,9 @@ class PurchaseItem
 
     public function setProduct(?Product $product): self
     {
+
         $this->product = $product;
+
 
         return $this;
     }
@@ -57,6 +59,10 @@ class PurchaseItem
     public function setPurchase(?Purchase $purchase): self
     {
         $this->purchase = $purchase;
+
+        if (!$purchase->getPurchaseItems()->contains($this)) {
+            $purchase->addPurchaseItem($this);
+        }
 
         return $this;
     }
