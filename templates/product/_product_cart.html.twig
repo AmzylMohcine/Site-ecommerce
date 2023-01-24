@@ -4,9 +4,9 @@
 
 		<h4 class="card-title">
 			{{p.name}}
-			, ({{p.price / 100 }}&euro;)
+			, ({{p.price | amount }})
 		</h4>
-
+		{# &euro; #}
 		<span class="badge alert-warning">{{p.category.name}}</span>
 
 		<p class="card-text">

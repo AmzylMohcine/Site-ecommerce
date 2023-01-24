@@ -11,8 +11,8 @@
 
 	<p>
 		Total de votre panier :
-		{{ purchase.total / 100  }}
-		&#8364;
+		{{ purchase.total | amount  }}
+
 	</p>
 	<form id="payment-form">
 		<div
